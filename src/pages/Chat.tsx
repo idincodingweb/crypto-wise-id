@@ -7,6 +7,7 @@ import { sendMessage } from '@/lib/gemini';
 import { Send, Bot, User } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 
 interface Message {
   id: string;
@@ -97,7 +98,15 @@ const Chat = () => {
                       <div className="flex items-start space-x-2">
                         {message.sender === 'ai' && <Bot className="h-4 w-4 mt-1 text-primary" />}
                         {message.sender === 'user' && <User className="h-4 w-4 mt-1" />}
-                        <p className="text-sm">{message.content}</p>
+                        <div className="text-sm prose prose-sm max-w-none dark:prose-invert">
+                          {message.sender === 'ai' ? (
+                            <ReactMarkdown>
+                              {message.content}
+                            </ReactMarkdown>
+                          ) : (
+                            <p>{message.content}</p>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>

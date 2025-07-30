@@ -127,11 +127,9 @@ const Articles = () => {
                 onClick={() => handleArticleClick(article.id)}
               >
                 <div className="aspect-video relative overflow-hidden">
-                  <img 
-                    src={article.image} 
-                    alt={article.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
+                  <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-6xl">📖</span>
+                  </div>
                   <div className="absolute top-4 left-4">
                     <Badge variant="secondary" className="bg-background/80 backdrop-blur-sm">
                       {categories.find(c => c.id === article.category)?.icon} {categories.find(c => c.id === article.category)?.name}

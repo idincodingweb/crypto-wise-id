@@ -4,7 +4,6 @@ export interface Article {
   excerpt: string;
   content: string;
   category: string;
-  image: string;
   readTime: number;
   publishedAt: string;
   author: string;
@@ -98,7 +97,6 @@ Cryptocurrency menawarkan peluang investasi yang menarik, namun juga memiliki ri
 *Disclaimer: Artikel ini hanya untuk tujuan edukasi dan bukan saran investasi.*
     `,
     category: 'dasar',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop',
     readTime: 8,
     publishedAt: '2024-01-15',
     author: 'Idin Iskandar'
@@ -216,7 +214,6 @@ Membaca chart adalah skill yang perlu latihan konsisten. Mulai dengan indikator 
 *Remember: Past performance doesn't guarantee future results.*
     `,
     category: 'trading',
-    image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800&h=400&fit=crop',
     readTime: 12,
     publishedAt: '2024-01-20',
     author: 'Idin Iskandar'
@@ -404,7 +401,6 @@ Blockchain adalah teknologi revolusioner yang tidak hanya mendukung cryptocurren
 *"Blockchain is the biggest opportunity set we can think of over the next decade or so." - Bob Greifeld, Former Nasdaq CEO*
     `,
     category: 'blockchain',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop',
     readTime: 15,
     publishedAt: '2024-01-25',
     author: 'Idin Iskandar'
@@ -622,7 +618,6 @@ DeFi menawarkan peluang finansial yang revolusioner, namun juga memiliki risiko 
 *"DeFi is still in early innings, but the potential to democratize finance is enormous." - Vitalik Buterin*
     `,
     category: 'defi',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop',
     readTime: 18,
     publishedAt: '2024-02-01',
     author: 'Idin Iskandar'
@@ -878,7 +873,6 @@ DCA adalah strategi yang powerful dan terbukti untuk investasi cryptocurrency. K
 *"Time in the market beats timing the market" - Benjamin Graham*
     `,
     category: 'strategi',
-    image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800&h=400&fit=crop',
     readTime: 16,
     publishedAt: '2024-02-05',
     author: 'Idin Iskandar'
@@ -1052,7 +1046,6 @@ const generateMoreArticles = (): Article[] => {
       excerpt: `Panduan komprehensif tentang ${title.toLowerCase()} yang akan membantu Anda memahami konsep ini dengan lebih baik.`,
       content: `# ${title}\n\nArtikel ini akan membahas secara mendalam tentang ${title.toLowerCase()}. Content akan dikembangkan sesuai kebutuhan.\n\n## Pendahuluan\n\nTopik ini sangat penting dalam dunia cryptocurrency dan blockchain...\n\n*Artikel sedang dalam pengembangan.*`,
       category,
-      image: `https://images.unsplash.com/photo-${1518770660439 + index}?w=800&h=400&fit=crop`,
       readTime: Math.floor(Math.random() * 15) + 5,
       publishedAt: new Date(2024, 0, 1 + index).toISOString().split('T')[0],
       author: 'Idin Iskandar'

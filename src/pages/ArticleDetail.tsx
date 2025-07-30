@@ -160,13 +160,11 @@ const ArticleDetail = () => {
             )}
           </div>
 
-          {/* Article Image */}
+          {/* Article Header */}
           <div className="aspect-video mb-8 rounded-lg overflow-hidden">
-            <img 
-              src={article.image} 
-              alt={article.title}
-              className="w-full h-full object-cover"
-            />
+            <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
+              <span className="text-8xl">📖</span>
+            </div>
           </div>
 
           {/* Article Content */}
@@ -308,11 +306,9 @@ const ArticleDetail = () => {
                     onClick={() => navigate(`/article/${relatedArticle.id}`)}
                   >
                     <div className="aspect-video relative overflow-hidden">
-                      <img 
-                        src={relatedArticle.image} 
-                        alt={relatedArticle.title}
-                        className="w-full h-full object-cover"
-                      />
+                      <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
+                        <span className="text-4xl">📖</span>
+                      </div>
                     </div>
                     <CardContent className="p-4">
                       <h4 className="font-semibold mb-2 line-clamp-2">{relatedArticle.title}</h4>
