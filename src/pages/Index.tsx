@@ -3,7 +3,7 @@ import Navbar from '@/components/Navbar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { categories } from '@/data/articles';
-import { ArrowRight, BookOpen, MessageCircle, TrendingUp, Users, Star } from 'lucide-react';
+import { ArrowRight, BookOpen, MessageCircle, TrendingUp, Users, Star, Shield } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
@@ -21,6 +21,12 @@ const Index = () => {
       title: 'AI Expert Chat',
       description: 'Tanya jawab dengan AI yang dilatih khusus untuk investasi cryptocurrency',
       color: 'text-accent'
+    },
+    {
+      icon: Shield,
+      title: 'Token Analyzer Pro',
+      description: 'Analisis keamanan token kripto untuk mendeteksi honeypot dan risiko investasi',
+      color: 'text-secondary'
     },
     {
       icon: TrendingUp,
@@ -79,7 +85,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             {features.map((feature, index) => (
               <Card key={index} className="crypto-card hover:scale-105 transition-transform duration-300">
                 <CardContent className="p-6 text-center">

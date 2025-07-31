@@ -13,7 +13,7 @@ const About = () => {
               Tentang <span className="gradient-text">CryptoWise</span>
             </h1>
             <p className="text-xl text-foreground/70">
-              Platform pembelajaran cryptocurrency terpercaya di Indonesia
+              Platform pembelajaran cryptocurrency & analisis token terdepan di Indonesia
             </p>
           </div>
 
@@ -24,7 +24,8 @@ const About = () => {
                 <h3 className="text-xl font-semibold mb-3">Misi Kami</h3>
                 <p className="text-foreground/70">
                   Mendemokratisasi akses edukasi cryptocurrency dan membantu investor Indonesia 
-                  memahami dunia digital assets dengan cara yang aman dan bertanggung jawab.
+                  memahami dunia digital assets dengan cara yang aman dan bertanggung jawab melalui 
+                  tools analisis keamanan token yang canggih.
                 </p>
               </CardContent>
             </Card>
@@ -34,8 +35,8 @@ const About = () => {
                 <Globe className="h-12 w-12 text-accent mb-4" />
                 <h3 className="text-xl font-semibold mb-3">Visi Kami</h3>
                 <p className="text-foreground/70">
-                  Menjadi platform edukasi crypto #1 di Indonesia yang dipercaya oleh 
-                  jutaan investor untuk mengembangkan pengetahuan dan skill trading mereka.
+                  Menjadi platform edukasi crypto & analisis keamanan token #1 di Indonesia yang dipercaya oleh 
+                  jutaan investor untuk mengembangkan pengetahuan, melakukan riset, dan trading dengan aman.
                 </p>
               </CardContent>
             </Card>
@@ -53,8 +54,8 @@ const About = () => {
                 </div>
                 
                 <div className="flex-1 text-center md:text-left">
-                  <h3 className="text-2xl font-bold mb-2">Idin Iskandar</h3>
-                  <p className="text-lg text-primary mb-4">Full Stack Developer & Crypto Enthusiast</p>
+                  <h3 className="text-2xl font-bold mb-2">Idin Iskandar, S.kom</h3>
+                  <p className="text-lg text-primary mb-4">Full Stack Developer & Crypto Security Expert</p>
                   
                   <div className="space-y-3 text-foreground/70">
                     <p>
@@ -68,8 +69,9 @@ const About = () => {
                     </p>
                     
                     <p>
-                      Menciptakan CryptoWise dengan tujuan sharing knowledge dan membantu 
-                      investor Indonesia untuk lebih memahami dunia cryptocurrency.
+                      Menciptakan CryptoWise & Token Analyzer Pro dengan tujuan sharing knowledge dan membantu 
+                      investor Indonesia untuk lebih memahami dunia cryptocurrency serta melakukan riset awal 
+                      terhadap token kripto untuk menghindari penipuan.
                     </p>
                   </div>
                   
@@ -78,6 +80,7 @@ const About = () => {
                     <span className="px-3 py-1 bg-accent/20 text-accent rounded-full text-sm">TypeScript</span>
                     <span className="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-sm">Blockchain</span>
                     <span className="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">DeFi</span>
+                    <span className="px-3 py-1 bg-accent/20 text-accent rounded-full text-sm">Token Security</span>
                   </div>
                 </div>
               </div>
@@ -96,8 +99,8 @@ const About = () => {
             <Card className="crypto-card text-center">
               <CardContent className="p-6">
                 <Shield className="h-8 w-8 text-accent mx-auto mb-3" />
-                <h4 className="font-semibold mb-2">150+</h4>
-                <p className="text-sm text-foreground/70">Premium Articles</p>
+                <h4 className="font-semibold mb-2">Token</h4>
+                <p className="text-sm text-foreground/70">Security Analyzer</p>
               </CardContent>
             </Card>
             

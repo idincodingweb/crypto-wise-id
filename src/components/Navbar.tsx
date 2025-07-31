@@ -53,6 +53,12 @@ const Navbar = () => {
               Artikel
             </Link>
             <Link 
+              to="/token-analyzer" 
+              className="text-foreground/80 hover:text-primary transition-colors"
+            >
+              Token Analyzer
+            </Link>
+            <Link 
               to="/chat" 
               className="text-foreground/80 hover:text-primary transition-colors"
             >
@@ -132,6 +138,13 @@ const Navbar = () => {
                 onClick={() => setIsOpen(false)}
               >
                 Artikel
+              </Link>
+              <Link 
+                to="/token-analyzer" 
+                className="block px-3 py-2 text-foreground/80 hover:text-primary transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                Token Analyzer
               </Link>
               <Link 
                 to="/chat" 

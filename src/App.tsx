@@ -7,6 +7,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import Index from "./pages/Index";
 import Articles from "./pages/Articles";
 import ArticleDetail from "./pages/ArticleDetail";
+import TokenAnalyzer from "./pages/TokenAnalyzer";
 import Chat from "./pages/Chat";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/articles" element={<Articles />} />
             <Route path="/article/:id" element={<ArticleDetail />} />
+            <Route path="/token-analyzer" element={<TokenAnalyzer />} />
             <Route path="/chat" element={<Chat />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
