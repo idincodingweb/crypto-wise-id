@@ -36,25 +36,27 @@ export const analyzeToken = async (contractAddress: string, chain: string = 'bsc
       }
     };
 
+    console.log('Making API request with options:', options);
     const response = await axios.request(options);
+    console.log('API Response:', response.data);
     
     if (response.status === 200 && response.data) {
       // Transform API response to our format
       const data = response.data;
       
       return {
-        isHoneypot: data.is_honeypot || false,
+        isHoneypot: data.is_honeypot || data.isHoneypot || false,
         riskLevel: determineRiskLevel(data),
-        liquidityLocked: data.liquidity_locked || false,
+        liquidityLocked: data.liquidity_locked || data.liquidityLocked || false,
         ownershipDistribution: {
-          owner: data.owner_percentage || 0,
-          top10: data.top_10_holders_percentage || 0,
-          others: 100 - (data.owner_percentage || 0) - (data.top_10_holders_percentage || 0)
+          owner: data.owner_percentage || data.ownerPercentage || 0,
+          top10: data.top_10_holders_percentage || data.top10HoldersPercentage || 0,
+          others: 100 - (data.owner_percentage || data.ownerPercentage || 0) - (data.top_10_holders_percentage || data.top10HoldersPercentage || 0)
         },
         tokenInfo: {
-          name: data.token_name || 'Unknown',
-          symbol: data.token_symbol || 'Unknown',
-          totalSupply: data.total_supply || '0',
+          name: data.token_name || data.tokenName || data.name || 'Unknown Token',
+          symbol: data.token_symbol || data.tokenSymbol || data.symbol || 'UNKNOWN',
+          totalSupply: data.total_supply || data.totalSupply || data.supply || '0',
           decimals: data.decimals || 18
         },
         securityScore: calculateSecurityScore(data)
@@ -64,6 +66,15 @@ export const analyzeToken = async (contractAddress: string, chain: string = 'bsc
     throw new Error('Invalid response from API');
   } catch (error) {
     console.error('Error analyzing token:', error);
+    if (axios.isAxiosError(error)) {
+      if (error.response?.status === 429) {
+        throw new Error('Rate limit exceeded. Please try again later.');
+      } else if (error.response?.status === 404) {
+        throw new Error('Token not found. Please check the contract address.');
+      } else if (error.response?.status === 400) {
+        throw new Error('Invalid contract address format.');
+      }
+    }
     throw new Error('Failed to analyze token. Please check the contract address and try again.');
   }
 };
