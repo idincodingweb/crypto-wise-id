@@ -97,63 +97,119 @@ const TokenAnalyzer = () => {
           </Card>
         </div>
 
-        {/* Price Chart */}
+        {/* Crypto Detail Page - CoinMarketCap Style */}
         {selectedToken && (
-          <div className="max-w-6xl mx-auto mb-8">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3">
-                  <img 
-                    src={selectedToken.image} 
-                    alt={selectedToken.name}
-                    className="w-8 h-8 rounded-full"
-                  />
-                  <div>
-                    <div className="text-xl font-bold">{selectedToken.name}</div>
-                    <div className="text-sm text-muted-foreground">{selectedToken.symbol.toUpperCase()}</div>
+          <div className="max-w-7xl mx-auto mb-8">
+            {/* Header Section */}
+            <Card className="mb-6">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-4">
+                    <img 
+                      src={selectedToken.image} 
+                      alt={selectedToken.name}
+                      className="w-12 h-12 rounded-full"
+                    />
+                    <div>
+                      <h1 className="text-3xl font-bold">{selectedToken.name}</h1>
+                      <div className="text-lg text-muted-foreground">{selectedToken.symbol.toUpperCase()}</div>
+                    </div>
+                    <div className="ml-4 px-3 py-1 bg-secondary rounded-full text-sm font-medium">
+                      Rank #{selectedToken.market_cap_rank}
+                    </div>
                   </div>
-                  <div className="ml-auto text-right">
-                    <div className="text-2xl font-bold">{formatPrice(selectedToken.current_price)}</div>
-                    <div className="text-sm">
+                  <div className="text-right">
+                    <div className="text-4xl font-bold mb-2">{formatPrice(selectedToken.current_price)}</div>
+                    <div className="text-lg">
                       {formatPercentage(selectedToken.price_change_percentage_24h)}
                     </div>
+                  </div>
+                </div>
+
+                {/* Key Stats */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                  <div>
+                    <div className="text-sm text-muted-foreground mb-1">Market Cap</div>
+                    <div className="text-xl font-semibold">
+                      ${selectedToken.market_cap?.toLocaleString() || 'N/A'}
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-sm text-muted-foreground mb-1">24h Volume</div>
+                    <div className="text-xl font-semibold">
+                      ${selectedToken.volume_24h?.toLocaleString() || 'N/A'}
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-sm text-muted-foreground mb-1">Circulating Supply</div>
+                    <div className="text-xl font-semibold">
+                      {selectedToken.circulating_supply?.toLocaleString() || 'N/A'} {selectedToken.symbol.toUpperCase()}
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-sm text-muted-foreground mb-1">Max Supply</div>
+                    <div className="text-xl font-semibold">
+                      {selectedToken.max_supply ? selectedToken.max_supply.toLocaleString() : '∞'} {selectedToken.symbol.toUpperCase()}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Price Chart */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center justify-between">
+                  <span>{selectedToken.name} to USD Chart</span>
+                  <div className="flex gap-2">
+                    <span className="px-3 py-1 bg-primary text-primary-foreground rounded text-sm">7D</span>
                   </div>
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 {isLoadingChart ? (
                   <div className="h-96 flex items-center justify-center">
-                    <div className="text-muted-foreground">Loading price chart...</div>
+                    <div className="animate-pulse">
+                      <div className="text-muted-foreground">Loading price chart...</div>
+                    </div>
                   </div>
-                ) : (
+                ) : priceHistory.length > 0 ? (
                   <div className="h-96">
                     <ChartContainer
                       config={{
                         price: {
-                          label: "Price",
+                          label: "Price (USD)",
                           color: "hsl(var(--primary))",
                         },
                       }}
                     >
                       <ResponsiveContainer width="100%" height="100%">
-                        <LineChart data={priceHistory}>
+                        <LineChart data={priceHistory} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                           <XAxis 
                             dataKey="date" 
                             stroke="hsl(var(--muted-foreground))"
-                            fontSize={12}
+                            fontSize={11}
                             tickLine={false}
                             axisLine={false}
+                            interval="preserveStartEnd"
                           />
                           <YAxis 
                             stroke="hsl(var(--muted-foreground))"
-                            fontSize={12}
+                            fontSize={11}
                             tickLine={false}
                             axisLine={false}
-                            tickFormatter={(value) => `$${value.toFixed(2)}`}
+                            tickFormatter={(value) => `$${value < 1 ? value.toFixed(4) : value.toLocaleString()}`}
+                            domain={['dataMin', 'dataMax']}
                           />
                           <ChartTooltip 
                             content={<ChartTooltipContent />}
                             cursor={{ stroke: "hsl(var(--muted))", strokeWidth: 1 }}
+                            labelStyle={{ color: "hsl(var(--foreground))" }}
+                            contentStyle={{ 
+                              backgroundColor: "hsl(var(--popover))", 
+                              border: "1px solid hsl(var(--border))",
+                              borderRadius: "8px"
+                            }}
                           />
                           <Line
                             type="monotone"
@@ -162,15 +218,19 @@ const TokenAnalyzer = () => {
                             strokeWidth={2}
                             dot={false}
                             activeDot={{ 
-                              r: 4, 
+                              r: 6, 
                               fill: "hsl(var(--primary))",
                               stroke: "hsl(var(--background))",
-                              strokeWidth: 2
+                              strokeWidth: 3
                             }}
                           />
                         </LineChart>
                       </ResponsiveContainer>
                     </ChartContainer>
+                  </div>
+                ) : (
+                  <div className="h-96 flex items-center justify-center">
+                    <div className="text-muted-foreground">No chart data available</div>
                   </div>
                 )}
               </CardContent>
