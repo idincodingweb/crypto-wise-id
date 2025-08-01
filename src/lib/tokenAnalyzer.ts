@@ -99,30 +99,56 @@ const calculateSecurityScore = (data: any): number => {
 
 export const getPopularTokens = async () => {
   try {
-    // Using CoinGecko API for popular tokens
+    // Using CoinGecko API for top 100 tokens
     const response = await axios.get('https://api.coingecko.com/api/v3/coins/markets', {
       params: {
         vs_currency: 'usd',
         order: 'market_cap_desc',
-        per_page: 10,
+        per_page: 100,
         page: 1,
-        sparkline: false
+        sparkline: false,
+        price_change_percentage: '24h'
       }
     });
 
     return response.data.map((coin: any) => ({
       id: coin.id,
-      symbol: coin.symbol.toUpperCase(),
+      symbol: coin.symbol,
       name: coin.name,
       image: coin.image,
       current_price: coin.current_price,
       market_cap_rank: coin.market_cap_rank,
-      // Note: CoinGecko doesn't provide contract addresses directly
-      // You might need to get these separately or use a different approach
-      contract_address: getKnownContractAddress(coin.symbol)
+      market_cap: coin.market_cap,
+      price_change_percentage_24h: coin.price_change_percentage_24h || 0,
+      volume_24h: coin.total_volume
     }));
   } catch (error) {
     console.error('Error fetching popular tokens:', error);
+    return [];
+  }
+};
+
+export const getTokenPriceHistory = async (coinId: string) => {
+  try {
+    const response = await axios.get(`https://api.coingecko.com/api/v3/coins/${coinId}/market_chart`, {
+      params: {
+        vs_currency: 'usd',
+        days: '7',
+        interval: 'hourly'
+      }
+    });
+
+    const prices = response.data.prices || [];
+    return prices.map((price: any) => ({
+      date: new Date(price[0]).toLocaleDateString('en-US', { 
+        month: 'short', 
+        day: 'numeric',
+        hour: '2-digit'
+      }),
+      price: price[1]
+    }));
+  } catch (error) {
+    console.error('Error fetching price history:', error);
     return [];
   }
 };
