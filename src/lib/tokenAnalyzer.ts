@@ -120,7 +120,9 @@ export const getPopularTokens = async () => {
       market_cap_rank: coin.market_cap_rank,
       market_cap: coin.market_cap,
       price_change_percentage_24h: coin.price_change_percentage_24h || 0,
-      volume_24h: coin.total_volume
+      volume_24h: coin.total_volume,
+      circulating_supply: coin.circulating_supply,
+      max_supply: coin.max_supply
     }));
   } catch (error) {
     console.error('Error fetching popular tokens:', error);
@@ -130,6 +132,7 @@ export const getPopularTokens = async () => {
 
 export const getTokenPriceHistory = async (coinId: string) => {
   try {
+    console.log('Fetching price history for coin:', coinId);
     const response = await axios.get(`https://api.coingecko.com/api/v3/coins/${coinId}/market_chart`, {
       params: {
         vs_currency: 'usd',
@@ -138,15 +141,32 @@ export const getTokenPriceHistory = async (coinId: string) => {
       }
     });
 
+    console.log('Price history response:', response.data);
     const prices = response.data.prices || [];
-    return prices.map((price: any) => ({
-      date: new Date(price[0]).toLocaleDateString('en-US', { 
-        month: 'short', 
-        day: 'numeric',
-        hour: '2-digit'
-      }),
-      price: price[1]
-    }));
+    
+    if (prices.length === 0) {
+      console.log('No price data available');
+      return [];
+    }
+    
+    const formattedData = prices.map((price: any, index: number) => {
+      const timestamp = price[0];
+      const priceValue = parseFloat(price[1]);
+      const date = new Date(timestamp);
+      
+      return {
+        date: date.toLocaleDateString('en-US', { 
+          month: 'short', 
+          day: 'numeric',
+          hour: '2-digit'
+        }),
+        price: priceValue,
+        timestamp: timestamp
+      };
+    });
+    
+    console.log('Formatted price data:', formattedData.slice(0, 3)); // Log first 3 items
+    return formattedData;
   } catch (error) {
     console.error('Error fetching price history:', error);
     return [];
