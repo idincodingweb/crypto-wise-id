@@ -85,7 +85,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-8">
             {features.map((feature, index) => (
               <Card key={index} className="crypto-card hover:scale-105 transition-transform duration-300">
                 <CardContent className="p-6 text-center">
@@ -111,7 +111,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {categories.map((category, index) => (
               <Card 
                 key={category.id} 
@@ -162,7 +162,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {testimonials.map((testimonial, index) => (
               <Card key={index} className="crypto-card">
                 <CardContent className="p-6">
@@ -221,7 +221,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="bg-card/50 py-12 px-4 sm:px-6 lg:px-8 border-t border-border/50">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center space-x-2 mb-4">
                 <div className="text-2xl">₿</div>

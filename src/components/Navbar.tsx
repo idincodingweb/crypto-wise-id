@@ -2,8 +2,16 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
-import { LogOut, Menu, X, Bitcoin } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { LogOut, Menu, X, Bitcoin, User, ChevronDown } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,62 +47,105 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link 
-              to="/" 
-              className="text-foreground/80 hover:text-primary transition-colors"
-            >
-              Beranda
-            </Link>
-            <Link 
-              to="/articles" 
-              className="text-foreground/80 hover:text-primary transition-colors"
-            >
-              Artikel
-            </Link>
-            <Link 
-              to="/news" 
-              className="text-foreground/80 hover:text-primary transition-colors"
-            >
-              Berita Kripto
-            </Link>
-            <Link 
-              to="/token-analyzer" 
-              className="text-foreground/80 hover:text-primary transition-colors"
-            >
-              Token Analyzer
-            </Link>
-            <Link 
-              to="/chat" 
-              className="text-foreground/80 hover:text-primary transition-colors"
-            >
-              AI Chat
-            </Link>
-            <Link 
-              to="/about" 
-              className="text-foreground/80 hover:text-primary transition-colors"
-            >
-              About
-            </Link>
+          <div className="hidden lg:flex items-center space-x-6">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="flex items-center space-x-2 hover:text-primary">
+                  <span>Beranda</span>
+                  <ChevronDown className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-48">
+                <DropdownMenuItem asChild>
+                  <Link to="/" className="flex items-center w-full">
+                    <span>Beranda</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/about" className="flex items-center w-full">
+                    <span>Tentang Kami</span>
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="flex items-center space-x-2 hover:text-primary">
+                  <span>Pembelajaran</span>
+                  <ChevronDown className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-48">
+                <DropdownMenuItem asChild>
+                  <Link to="/articles" className="flex items-center w-full">
+                    <span>Artikel</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/news" className="flex items-center w-full">
+                    <span>Berita Kripto</span>
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="flex items-center space-x-2 hover:text-primary">
+                  <span>Tools</span>
+                  <ChevronDown className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-48">
+                <DropdownMenuItem asChild>
+                  <Link to="/token-analyzer" className="flex items-center w-full">
+                    <span>Token Analyzer</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/chat" className="flex items-center w-full">
+                    <span>AI Chat</span>
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
 
           {/* Auth Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-4">
             {currentUser ? (
-              <div className="flex items-center space-x-4">
-                <span className="text-sm text-foreground/60">
-                  {currentUser.email}
-                </span>
-                <Button 
-                  onClick={handleLogout}
-                  variant="outline"
-                  size="sm"
-                  className="flex items-center space-x-2"
-                >
-                  <LogOut className="h-4 w-4" />
-                  <span>Logout</span>
-                </Button>
-              </div>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="flex items-center space-x-2 px-2">
+                    <Avatar className="h-8 w-8">
+                      <AvatarFallback className="text-xs">
+                        {currentUser.email?.[0]?.toUpperCase()}
+                      </AvatarFallback>
+                    </Avatar>
+                    <span className="hidden xl:block text-sm text-foreground/80 max-w-32 truncate">
+                      {currentUser.email}
+                    </span>
+                    <ChevronDown className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  <DropdownMenuItem asChild>
+                    <Link to="/profile" className="flex items-center w-full">
+                      <User className="mr-2 h-4 w-4" />
+                      <span>Profil Saya</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem 
+                    onClick={handleLogout}
+                    className="text-red-600 focus:text-red-600"
+                  >
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Logout</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             ) : (
               <div className="flex items-center space-x-2">
                 <Button 
@@ -116,7 +167,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <Button
               variant="ghost"
               size="sm"
@@ -129,66 +180,77 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-card/50 rounded-lg mt-2 backdrop-blur-sm">
+          <div className="lg:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-card/95 rounded-lg mt-2 backdrop-blur-sm border border-border/50 shadow-lg">
               <Link 
                 to="/" 
-                className="block px-3 py-2 text-foreground/80 hover:text-primary transition-colors"
+                className="block px-3 py-2 text-foreground/80 hover:text-primary hover:bg-accent/50 rounded-md transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 Beranda
               </Link>
               <Link 
                 to="/articles" 
-                className="block px-3 py-2 text-foreground/80 hover:text-primary transition-colors"
+                className="block px-3 py-2 text-foreground/80 hover:text-primary hover:bg-accent/50 rounded-md transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 Artikel
               </Link>
               <Link 
                 to="/news" 
-                className="block px-3 py-2 text-foreground/80 hover:text-primary transition-colors"
+                className="block px-3 py-2 text-foreground/80 hover:text-primary hover:bg-accent/50 rounded-md transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 Berita Kripto
               </Link>
               <Link 
                 to="/token-analyzer" 
-                className="block px-3 py-2 text-foreground/80 hover:text-primary transition-colors"
+                className="block px-3 py-2 text-foreground/80 hover:text-primary hover:bg-accent/50 rounded-md transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 Token Analyzer
               </Link>
               <Link 
                 to="/chat" 
-                className="block px-3 py-2 text-foreground/80 hover:text-primary transition-colors"
+                className="block px-3 py-2 text-foreground/80 hover:text-primary hover:bg-accent/50 rounded-md transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 AI Chat
               </Link>
               <Link 
                 to="/about" 
-                className="block px-3 py-2 text-foreground/80 hover:text-primary transition-colors"
+                className="block px-3 py-2 text-foreground/80 hover:text-primary hover:bg-accent/50 rounded-md transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 About
               </Link>
               
               {currentUser ? (
-                <div className="px-3 py-2 space-y-2">
-                  <p className="text-sm text-foreground/60">{currentUser.email}</p>
+                <div className="px-3 py-2 space-y-2 border-t border-border/50 mt-2 pt-4">
+                  <Link 
+                    to="/profile"
+                    className="flex items-center space-x-2 px-3 py-2 text-foreground/80 hover:text-primary hover:bg-accent/50 rounded-md transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <User className="h-4 w-4" />
+                    <span>Profil Saya</span>
+                  </Link>
+                  <p className="text-xs text-foreground/60 px-3 truncate">{currentUser.email}</p>
                   <Button 
-                    onClick={handleLogout}
+                    onClick={() => {
+                      handleLogout();
+                      setIsOpen(false);
+                    }}
                     variant="outline"
                     size="sm"
-                    className="w-full"
+                    className="w-full text-red-600 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950"
                   >
                     <LogOut className="h-4 w-4 mr-2" />
                     Logout
                   </Button>
                 </div>
               ) : (
-                <div className="px-3 py-2 space-y-2">
+                <div className="px-3 py-2 space-y-2 border-t border-border/50 mt-2 pt-4">
                   <Button 
                     onClick={() => {
                       navigate('/login');
@@ -206,7 +268,7 @@ const Navbar = () => {
                       setIsOpen(false);
                     }}
                     size="sm"
-                    className="w-full"
+                    className="w-full crypto-glow"
                   >
                     Register
                   </Button>

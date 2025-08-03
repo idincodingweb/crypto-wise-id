@@ -137,7 +137,7 @@ Data ini memberikan signal bullish yang kuat, meskipun investor retail perlu tet
 `,
     category: 'whale',
     author: 'CryptoAnalyst Team',
-    publishedAt: '2025-02-11',
+    publishedAt: '2025-02-03',
     readTime: 8,
     imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop',
     tags: ['Bitcoin', 'Whale', 'On-Chain', 'Akumulasi', 'Bull Market']
@@ -324,7 +324,7 @@ Key level $4,000 akan menjadi test penting. Break di atas level ini dengan volum
 `,
     category: 'analysis',
     author: 'Technical Analysis Team',
-    publishedAt: '2025-02-11',
+    publishedAt: '2025-02-02',
     readTime: 10,
     imageUrl: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop',
     tags: ['Ethereum', 'Technical Analysis', 'DeFi', '$4000', 'Bullish']
@@ -555,7 +555,7 @@ Key level breakout di $0.000016 akan menjadi trigger untuk rally menuju target $
 `,
     category: 'whale',
     author: 'Meme Coin Specialist',
-    publishedAt: '2025-02-10',
+    publishedAt: '2025-02-01',
     readTime: 9,
     imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop',
     tags: ['SHIB', 'Shiba Inu', 'Whale', 'Cup and Handle', 'Meme Coin']
@@ -838,7 +838,7 @@ Sektor AI-crypto convergence masih dalam tahap early adoption dengan massive gro
 `,
     category: 'new-coins',
     author: 'DeFi Research Team',
-    publishedAt: '2025-02-11',
+    publishedAt: '2025-01-30',
     readTime: 12,
     imageUrl: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800&h=400&fit=crop',
     tags: ['AI Tokens', 'ARC', 'AI16Z', 'Whale', 'DeFi', 'Artificial Intelligence']
@@ -1117,7 +1117,7 @@ Kombinasi supply scarcity, institutional demand, dan regulatory clarity mencipta
 `,
     category: 'investors',
     author: 'Institutional Research',
-    publishedAt: '2025-02-10',
+    publishedAt: '2025-01-28',
     readTime: 11,
     imageUrl: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=400&fit=crop',
     tags: ['MicroStrategy', 'Bitcoin', 'Corporate Treasury', 'Adam Back', 'Institutional']
@@ -1441,7 +1441,7 @@ Jupiter's dominance dalam DEX aggregation dan explosive growth liquid staking pr
 `,
     category: 'analysis',
     author: 'Solana Research Team',
-    publishedAt: '2025-02-09',
+    publishedAt: '2025-01-27',
     readTime: 13,
     imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop',
     tags: ['Solana', 'DeFi', 'TVL', 'Jupiter', 'Liquid Staking', 'SOL']
