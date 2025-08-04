@@ -42,7 +42,7 @@ const Profile = () => {
   const [loading, setLoading] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [profile, setProfile] = useState<Profile>({
-    user_id: currentUser?.uid || '',
+    user_id: currentUser?.id || '',
     display_name: '',
     avatar_url: '',
     bio: '',
@@ -62,7 +62,7 @@ const Profile = () => {
       const { data, error } = await supabase
         .from('profiles')
         .select('*')
-        .eq('user_id', currentUser.uid)
+        .eq('user_id', currentUser.id)
         .maybeSingle();
 
       if (error && error.code !== 'PGRST116') {
@@ -98,7 +98,7 @@ const Profile = () => {
 
       const file = event.target.files[0];
       const fileExt = file.name.split('.').pop();
-      const fileName = `${currentUser?.uid}/avatar.${fileExt}`;
+      const fileName = `${currentUser?.id}/avatar.${fileExt}`;
 
       const { error: uploadError } = await supabase.storage
         .from('avatars')
@@ -136,7 +136,7 @@ const Profile = () => {
       setLoading(true);
 
       const profileData = {
-        user_id: currentUser.uid,
+        user_id: currentUser.id,
         display_name: profile.display_name,
         avatar_url: profile.avatar_url,
         bio: profile.bio,

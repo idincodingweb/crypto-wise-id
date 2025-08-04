@@ -32,16 +32,24 @@ const Login = () => {
 
     setLoading(true);
     try {
-      await login(email, password);
-      toast({
-        title: "Login Berhasil",
-        description: "Selamat datang kembali!",
-      });
-      navigate('/articles');
+      const { error } = await login(email, password);
+      if (error) {
+        toast({
+          title: "Login Gagal",
+          description: error.message || "Email atau password salah",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Login Berhasil",
+          description: "Selamat datang kembali!",
+        });
+        navigate('/articles');
+      }
     } catch (error: any) {
       toast({
         title: "Login Gagal",
-        description: error.message || "Email atau password salah",
+        description: error.message || "Terjadi kesalahan sistem",
         variant: "destructive",
       });
     } finally {

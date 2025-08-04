@@ -58,26 +58,36 @@ const Register = () => {
 
     setLoading(true);
     try {
-      await register(email, password);
-      toast({
-        title: "Registrasi Berhasil",
-        description: "Akun Anda telah dibuat. Selamat belajar!",
-      });
-      navigate('/articles');
-    } catch (error: any) {
-      let errorMessage = "Terjadi kesalahan saat registrasi";
-      
-      if (error.code === 'auth/email-already-in-use') {
-        errorMessage = "Email sudah terdaftar";
-      } else if (error.code === 'auth/invalid-email') {
-        errorMessage = "Format email tidak valid";
-      } else if (error.code === 'auth/weak-password') {
-        errorMessage = "Password terlalu lemah";
-      }
+      const { error } = await register(email, password);
+      if (error) {
+        let errorMessage = "Terjadi kesalahan saat registrasi";
+        
+        if (error.message?.includes('email-already-in-use') || error.message?.includes('already registered')) {
+          errorMessage = "Email sudah terdaftar";
+        } else if (error.message?.includes('invalid-email')) {
+          errorMessage = "Format email tidak valid";
+        } else if (error.message?.includes('weak-password')) {
+          errorMessage = "Password terlalu lemah";
+        } else if (error.message) {
+          errorMessage = error.message;
+        }
 
+        toast({
+          title: "Registrasi Gagal", 
+          description: errorMessage,
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Registrasi Berhasil",
+          description: "Akun Anda telah dibuat. Silakan cek email untuk verifikasi.",
+        });
+        navigate('/login');
+      }
+    } catch (error: any) {
       toast({
         title: "Registrasi Gagal",
-        description: errorMessage,
+        description: error.message || "Terjadi kesalahan sistem",
         variant: "destructive",
       });
     } finally {
