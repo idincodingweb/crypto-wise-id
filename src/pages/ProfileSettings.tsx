@@ -8,7 +8,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
-import { Upload, User, Link as LinkIcon, Save, Loader2 } from 'lucide-react';
+import { Upload, User, Link as LinkIcon, Save, Loader2, ArrowLeft } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 
 interface Profile {
@@ -25,20 +26,10 @@ interface Profile {
   };
 }
 
-interface DbProfile {
-  id: string;
-  user_id: string;
-  display_name: string | null;
-  avatar_url: string | null;
-  bio: string | null;
-  social_media: any;
-  created_at: string;
-  updated_at: string;
-}
-
-const Profile = () => {
+const ProfileSettings = () => {
   const { currentUser } = useAuth();
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [profile, setProfile] = useState<Profile>({
@@ -155,6 +146,9 @@ const Profile = () => {
         title: "Berhasil",
         description: "Profil berhasil disimpan",
       });
+
+      // Navigate back to profile view
+      navigate('/profile');
     } catch (error: any) {
       toast({
         title: "Error",
@@ -187,9 +181,19 @@ const Profile = () => {
       
       <div className="container mx-auto px-4 pt-24 pb-12">
         <div className="max-w-2xl mx-auto">
-          <h1 className="text-3xl font-bold mb-8 text-center">
-            <span className="gradient-text">Profil Saya</span>
-          </h1>
+          <div className="flex items-center space-x-4 mb-8">
+            <Button 
+              variant="ghost" 
+              size="sm"
+              onClick={() => navigate('/profile')}
+            >
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Kembali
+            </Button>
+            <h1 className="text-3xl font-bold">
+              <span className="gradient-text">Edit Profil</span>
+            </h1>
+          </div>
 
           <Card className="crypto-card">
             <CardHeader>
@@ -331,23 +335,32 @@ const Profile = () => {
               </div>
 
               {/* Save Button */}
-              <Button 
-                onClick={saveProfile} 
-                className="w-full crypto-glow"
-                disabled={loading}
-              >
-                {loading ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Menyimpan...
-                  </>
-                ) : (
-                  <>
-                    <Save className="mr-2 h-4 w-4" />
-                    Simpan Profil
-                  </>
-                )}
-              </Button>
+              <div className="flex gap-4">
+                <Button 
+                  onClick={saveProfile} 
+                  className="flex-1 crypto-glow"
+                  disabled={loading}
+                >
+                  {loading ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Menyimpan...
+                    </>
+                  ) : (
+                    <>
+                      <Save className="mr-2 h-4 w-4" />
+                      Simpan Profil
+                    </>
+                  )}
+                </Button>
+                <Button 
+                  variant="outline"
+                  onClick={() => navigate('/profile')}
+                  disabled={loading}
+                >
+                  Batal
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </div>
@@ -356,4 +369,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfileSettings;
