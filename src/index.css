@@ -2,62 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Crypto Investment Learning Website Design System */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* Modern Crypto Platform Design System - Inspired by Premium Trading Platforms */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    /* Crypto-themed elegant color palette */
-    --background: 220 26% 4%;
-    --foreground: 210 40% 98%;
+    /* Modern Dark Blue & Purple Crypto Theme */
+    --background: 235 50% 7%;           /* Deep space blue */
+    --foreground: 210 40% 98%;          /* Crisp white */
 
-    --card: 224 44% 7%;
-    --card-foreground: 213 31% 91%;
+    --card: 235 45% 12%;                /* Slightly lighter blue */
+    --card-foreground: 210 30% 92%;     /* Off-white */
 
-    --popover: 224 44% 7%;
+    --popover: 235 45% 12%;
     --popover-foreground: 210 40% 98%;
 
-    /* Crypto gold gradient colors */
-    --primary: 45 93% 58%;
-    --primary-foreground: 224 44% 7%;
+    /* Electric Blue Primary (like the circular elements) */
+    --primary: 212 100% 65%;            /* Bright electric blue */
+    --primary-foreground: 235 50% 7%;   /* Dark background for contrast */
     
-    --primary-glow: 45 100% 65%;
-    --primary-dark: 38 92% 50%;
+    --primary-glow: 212 100% 75%;       /* Lighter glow version */
+    --primary-dark: 212 90% 55%;        /* Darker version */
 
-    /* Bitcoin orange accent */
-    --secondary: 25 95% 53%;
+    /* Purple/Pink Accent (like the inner circles) */
+    --secondary: 290 75% 65%;           /* Purple-pink */
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217 19% 12%;
-    --muted-foreground: 217 10% 64%;
+    --muted: 235 35% 15%;               /* Muted dark blue */
+    --muted-foreground: 215 20% 65%;    /* Muted text */
 
-    /* Ethereum blue accent */
-    --accent: 217 91% 60%;
-    --accent-foreground: 210 40% 98%;
+    /* Cyan Accent for highlights */
+    --accent: 185 95% 60%;              /* Bright cyan */
+    --accent-foreground: 235 50% 7%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217 19% 12%;
-    --input: 217 19% 12%;
-    --ring: 45 93% 58%;
+    --border: 235 30% 18%;              /* Subtle borders */
+    --input: 235 35% 15%;               /* Input backgrounds */
+    --ring: 212 100% 65%;               /* Focus rings */
 
-    --radius: 0.75rem;
+    --radius: 1rem;                     /* More rounded corners */
 
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(45 93% 58%), hsl(25 95% 53%));
-    --gradient-crypto: linear-gradient(135deg, hsl(217 91% 60%), hsl(45 93% 58%));
-    --gradient-dark: linear-gradient(135deg, hsl(224 44% 7%), hsl(217 19% 12%));
-    --gradient-glow: linear-gradient(135deg, hsl(45 100% 65%) 0%, hsl(217 91% 60%) 100%);
+    /* Modern Gradients - Inspired by the reference */
+    --gradient-primary: linear-gradient(135deg, hsl(212 100% 65%) 0%, hsl(185 95% 60%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(290 75% 65%) 0%, hsl(212 100% 65%) 100%);
+    --gradient-dark: linear-gradient(135deg, hsl(235 50% 7%) 0%, hsl(235 45% 12%) 100%);
+    --gradient-glow: radial-gradient(circle at center, hsl(212 100% 65% / 0.3) 0%, transparent 70%);
+    --gradient-orb: radial-gradient(circle, hsl(212 100% 75%) 0%, hsl(290 75% 65%) 30%, hsl(185 95% 60%) 60%, transparent 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(235 50% 7%) 0%, hsl(235 45% 12%) 50%, hsl(235 40% 8%) 100%);
 
-    /* Shadows */
-    --shadow-glow: 0 0 40px hsl(45 93% 58% / 0.3);
-    --shadow-crypto: 0 10px 30px -10px hsl(217 91% 60% / 0.4);
-    --shadow-elegant: 0 20px 50px -15px hsl(224 44% 7% / 0.8);
+    /* Advanced Shadows */
+    --shadow-glow: 0 0 60px hsl(212 100% 65% / 0.4);
+    --shadow-orb: 0 0 80px hsl(212 100% 65% / 0.3), 0 0 40px hsl(290 75% 65% / 0.2);
+    --shadow-card: 0 10px 40px hsl(235 50% 7% / 0.6), 0 0 20px hsl(212 100% 65% / 0.1);
+    --shadow-elegant: 0 20px 50px -15px hsl(235 50% 7% / 0.8);
 
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    /* Smooth Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-glow: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .dark {
@@ -110,18 +115,22 @@
 }
 
 @layer components {
-  /* Crypto themed components */
+  /* Modern Crypto Components */
   .crypto-glow {
-    @apply relative;
+    @apply relative transition-all duration-500;
+    box-shadow: var(--shadow-glow);
   }
   
   .crypto-glow::before {
     content: '';
-    @apply absolute inset-0 rounded-lg;
-    background: var(--gradient-glow);
-    opacity: 0.6;
-    filter: blur(20px);
+    @apply absolute inset-0 rounded-lg opacity-0 transition-opacity duration-500;
+    background: var(--gradient-orb);
+    filter: blur(30px);
     z-index: -1;
+  }
+
+  .crypto-glow:hover::before {
+    opacity: 0.4;
   }
 
   .gradient-text {
@@ -129,32 +138,73 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
   }
 
   .crypto-card {
-    @apply bg-card/50 backdrop-blur-sm border-border/50 rounded-lg transition-all duration-300;
-    box-shadow: var(--shadow-elegant);
+    @apply bg-card/80 backdrop-blur-xl border border-border/30 rounded-2xl transition-all duration-500;
+    box-shadow: var(--shadow-card);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .crypto-card::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-500;
+    background: var(--gradient-glow);
+    z-index: -1;
   }
 
   .crypto-card:hover {
-    @apply border-primary/30;
-    box-shadow: var(--shadow-crypto);
+    @apply border-primary/50 transform scale-[1.02];
+    box-shadow: var(--shadow-orb);
   }
 
-  .floating-animation {
-    animation: floating 3s ease-in-out infinite;
+  .crypto-card:hover::before {
+    opacity: 1;
   }
 
-  .pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
+  .orb-background {
+    @apply absolute rounded-full;
+    background: var(--gradient-orb);
+    filter: blur(40px);
+    animation: floating 4s ease-in-out infinite;
+  }
+
+  .floating-orb {
+    animation: floating 6s ease-in-out infinite;
+  }
+
+  .pulse-orb {
+    animation: pulse-orb 3s ease-in-out infinite;
   }
 
   .slide-up {
-    animation: slide-up 0.6s ease-out;
+    animation: slide-up 0.8s ease-out;
   }
 
   .fade-in {
-    animation: fade-in 0.8s ease-out;
+    animation: fade-in 1s ease-out;
+  }
+
+  .hero-orb {
+    @apply absolute rounded-full opacity-80;
+    background: var(--gradient-orb);
+    filter: blur(60px);
+    animation: floating 8s ease-in-out infinite;
+  }
+
+  .rotating-border {
+    position: relative;
+  }
+
+  .rotating-border::before {
+    content: '';
+    @apply absolute inset-0 rounded-full;
+    background: conic-gradient(from 0deg, transparent, hsl(212 100% 65%), transparent);
+    animation: spin 4s linear infinite;
+    z-index: -1;
   }
 }
 
@@ -165,33 +215,59 @@
 }
 
 @keyframes floating {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  33% { 
+    transform: translateY(-15px) rotate(1deg); 
+  }
+  66% { 
+    transform: translateY(-5px) rotate(-1deg); 
+  }
 }
 
-@keyframes pulse-glow {
+@keyframes pulse-orb {
   0%, 100% { 
-    box-shadow: 0 0 20px hsl(45 93% 58% / 0.3);
+    transform: scale(1);
+    box-shadow: var(--shadow-glow);
   }
   50% { 
-    box-shadow: 0 0 40px hsl(45 93% 58% / 0.6), 0 0 60px hsl(217 91% 60% / 0.3);
+    transform: scale(1.05);
+    box-shadow: var(--shadow-orb);
   }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 @keyframes slide-up {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { 
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 @keyframes typing {

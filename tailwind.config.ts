@@ -20,6 +20,7 @@ export default {
 		extend: {
 			fontFamily: {
 				inter: ['Inter', 'sans-serif'],
+				'space-grotesk': ['Space Grotesk', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -60,21 +61,26 @@ export default {
 			},
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
-				'gradient-crypto': 'var(--gradient-crypto)',
+				'gradient-secondary': 'var(--gradient-secondary)',
 				'gradient-dark': 'var(--gradient-dark)',
 				'gradient-glow': 'var(--gradient-glow)',
+				'gradient-orb': 'var(--gradient-orb)',
+				'gradient-hero': 'var(--gradient-hero)',
 			},
 			boxShadow: {
 				'glow': 'var(--shadow-glow)',
-				'crypto': 'var(--shadow-crypto)',
+				'orb': 'var(--shadow-orb)',
+				'card': 'var(--shadow-card)',
 				'elegant': 'var(--shadow-elegant)',
 			},
 			animation: {
-				'floating': 'floating 3s ease-in-out infinite',
-				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
-				'slide-up': 'slide-up 0.6s ease-out',
-				'fade-in': 'fade-in 0.8s ease-out',
+				'floating': 'floating 6s ease-in-out infinite',
+				'pulse-orb': 'pulse-orb 3s ease-in-out infinite',
+				'slide-up': 'slide-up 0.8s ease-out',
+				'fade-in': 'fade-in 1s ease-out',
 				'typing': 'typing 1s ease-in-out infinite',
+				'gradient-shift': 'gradient-shift 3s ease infinite',
+				'spin': 'spin 4s linear infinite',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
