@@ -39,19 +39,19 @@ const Articles = () => {
       
       {/* Header */}
       <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+        <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
               <span className="gradient-text">Artikel</span> Pembelajaran
             </h1>
-            <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-foreground/70 max-w-2xl mx-auto px-4">
               150+ artikel premium tentang cryptocurrency, trading, dan blockchain technology
             </p>
           </div>
 
           {/* Search and Filter */}
-          <div className="max-w-4xl mx-auto">
-            <div className="flex flex-col md:flex-row gap-4 mb-8">
+          <div className="max-w-4xl mx-auto px-4">
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-foreground/40 h-4 w-4" />
                 <Input
@@ -61,12 +61,12 @@ const Articles = () => {
                   className="pl-10"
                 />
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 w-full sm:w-auto">
                 <Filter className="h-4 w-4 text-foreground/60" />
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="bg-background border border-border rounded-md px-3 py-2 text-sm"
+                  className="bg-background border border-border rounded-md px-3 py-2 text-sm flex-1 sm:flex-none"
                 >
                   <option value="all">Semua Kategori</option>
                   {categories.map(category => (
@@ -96,7 +96,7 @@ const Articles = () => {
                   className="flex items-center space-x-1"
                 >
                   <span>{category.icon}</span>
-                  <span>{category.name}</span>
+                  <span className="hidden sm:inline">{category.name}</span>
                 </Button>
               ))}
             </div>
@@ -106,7 +106,7 @@ const Articles = () => {
 
       {/* Articles Grid */}
       <section className="pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+        <div className="container mx-auto max-w-7xl">
           {!currentUser && (
             <div className="bg-primary/10 border border-primary/20 rounded-lg p-6 mb-8 text-center">
               <h3 className="text-lg font-semibold mb-2">Login Diperlukan</h3>

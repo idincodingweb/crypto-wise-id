@@ -96,14 +96,14 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background p-4">
+    <div className="min-h-screen flex items-center justify-center bg-background p-4 sm:p-6">
       {/* Background Effects */}
       <div className="absolute inset-0">
         <div className="absolute top-20 right-10 w-72 h-72 bg-accent/5 rounded-full blur-3xl floating-animation"></div>
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl floating-animation" style={{animationDelay: '1s'}}></div>
       </div>
 
-      <div className="relative z-10 w-full max-w-md">
+      <div className="relative z-10 w-full max-w-md mx-auto">
         {/* Logo */}
         <div className="text-center mb-8">
           <Link to="/" className="inline-flex items-center space-x-2 crypto-glow">

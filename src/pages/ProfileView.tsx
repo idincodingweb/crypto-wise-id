@@ -75,7 +75,7 @@ const ProfileView = () => {
     return (
       <div className="min-h-screen bg-background">
         <Navbar />
-        <div className="container mx-auto px-4 pt-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-24">
           <Card className="max-w-md mx-auto">
             <CardContent className="p-6 text-center">
               <p>Silakan login untuk mengakses halaman profil.</p>
@@ -90,7 +90,7 @@ const ProfileView = () => {
     return (
       <div className="min-h-screen bg-background">
         <Navbar />
-        <div className="container mx-auto px-4 pt-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-24">
           <div className="max-w-2xl mx-auto text-center">
             <p>Memuat profil...</p>
           </div>
@@ -103,7 +103,7 @@ const ProfileView = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       
-      <div className="container mx-auto px-4 pt-24 pb-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
         <div className="max-w-2xl mx-auto">
           <div className="flex justify-between items-center mb-8">
             <h1 className="text-3xl font-bold">

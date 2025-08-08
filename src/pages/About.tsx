@@ -7,17 +7,17 @@ const About = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <div className="pt-24 pb-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
+        <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4">
+            <h1 className="text-3xl sm:text-4xl font-bold mb-4">
               Tentang <span className="gradient-text">CryptoWise</span>
             </h1>
-            <p className="text-xl text-foreground/70">
+            <p className="text-lg sm:text-xl text-foreground/70 px-4">
               Platform pembelajaran cryptocurrency & analisis token terdepan di Indonesia
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-12">
             <Card className="crypto-card">
               <CardContent className="p-6">
                 <Bitcoin className="h-12 w-12 text-primary mb-4" />
@@ -49,11 +49,11 @@ const About = () => {
               </div>
               
               <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8">
-                <div className="w-32 h-32 bg-gradient-primary rounded-full flex items-center justify-center text-4xl font-bold text-primary-foreground">
+                <div className="w-24 h-24 sm:w-32 sm:h-32 bg-gradient-primary rounded-full flex items-center justify-center text-3xl sm:text-4xl font-bold text-primary-foreground">
                   II
                 </div>
                 
-                <div className="flex-1 text-center md:text-left">
+                <div className="flex-1 text-center md:text-left px-4">
                   <h3 className="text-2xl font-bold mb-2">Idin Iskandar, S.kom</h3>
                   <p className="text-lg text-primary mb-4">Full Stack Developer & Crypto Security Expert</p>
                   
@@ -87,7 +87,7 @@ const About = () => {
             </CardContent>
           </Card>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
             <Card className="crypto-card text-center">
               <CardContent className="p-6">
                 <Users className="h-8 w-8 text-primary mx-auto mb-3" />

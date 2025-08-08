@@ -164,7 +164,7 @@ const ProfileSettings = () => {
     return (
       <div className="min-h-screen bg-background">
         <Navbar />
-        <div className="container mx-auto px-4 pt-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-24">
           <Card className="max-w-md mx-auto">
             <CardContent className="p-6 text-center">
               <p>Silakan login untuk mengakses halaman profil.</p>
@@ -179,7 +179,7 @@ const ProfileSettings = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       
-      <div className="container mx-auto px-4 pt-24 pb-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
         <div className="max-w-2xl mx-auto">
           <div className="flex items-center space-x-4 mb-8">
             <Button 
@@ -279,7 +279,7 @@ const ProfileSettings = () => {
                   <span>Social Media</span>
                 </h3>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4">
                   <div>
                     <Label htmlFor="twitter">Twitter</Label>
                     <Input

@@ -36,21 +36,21 @@ const News = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       
-      <div className="container mx-auto px-4 pt-24 pb-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 max-w-7xl">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-4">
             Berita Kripto Terkini
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
             Analisis mendalam, info coin baru, pergerakan investor, dan whale alert terbaru
           </p>
         </div>
 
         {/* Search and Filters */}
         <div className="mb-8 space-y-4">
-          <div className="relative max-w-md mx-auto">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+          <div className="relative max-w-md mx-auto px-4">
+            <Search className="absolute left-7 sm:left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
             <Input
               placeholder="Cari berita..."
               value={searchTerm}
@@ -59,23 +59,24 @@ const News = () => {
             />
           </div>
           
-          <div className="flex flex-wrap justify-center gap-2">
+          <div className="flex flex-wrap justify-center gap-2 px-4">
             {newsCategories.map((category) => (
               <Button
                 key={category.id}
                 variant={selectedCategory === category.id ? "default" : "outline"}
                 size="sm"
                 onClick={() => setSelectedCategory(category.id)}
-                className="text-sm"
+                className="text-xs sm:text-sm"
               >
-                {category.icon} {category.name}
+                <span className="mr-1">{category.icon}</span>
+                <span className="hidden sm:inline">{category.name}</span>
               </Button>
             ))}
           </div>
         </div>
 
         {/* News Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {filteredNews.map((article) => (
             <Link key={article.id} to={`/news/${article.id}`}>
               <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer group">
