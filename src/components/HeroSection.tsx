@@ -15,7 +15,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20">
       {/* Modern Background with Orbs */}
       <div className="absolute inset-0 bg-gradient-hero"></div>
       
